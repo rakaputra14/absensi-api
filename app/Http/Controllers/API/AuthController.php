@@ -76,7 +76,7 @@ class AuthController extends Controller
         auth('api')->logout();
         return response()->json(['message' => 'User logged out successfully']);
 
-        // try { 
+        // try {
         //     auth()->guard('api')->logout();
         //     return response()->json(['message' => 'User logged out successfully'], 200);
         // } catch (\Throwable $th) {
@@ -87,7 +87,8 @@ class AuthController extends Controller
     public function me()
     {
         try {
-            $user = auth()->guard('api')->user();
+            $user = auth('api')->user();
+            $employee = auth('api')->user()->employee;
             return response()->json(
                 [
                     'message' => 'User retrieved successfully',
