@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\OfficeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +21,8 @@ Route::middleware('auth:api')->group(function () {
     route::post('refresh', [AuthController::class, 'refresh']);
     // route::post('employee', [EmployeeController::class, 'store']);
     route::apiResource('employee', EmployeeController::class);
+    route::apiResource('office', OfficeController::class);
+
+    Route::post('attendanceIn', [AttendanceController::class, 'attendaceIn']);
+
 });
